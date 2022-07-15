@@ -17,6 +17,7 @@ public enum SesssionError: Error {
     
     public enum ResponseErrorReason {
         case badServerResponse(Int?)
+        case parseJSONFail(String)
     }
 }
 
@@ -49,6 +50,12 @@ extension SesssionError.ResponseErrorReason: Equatable {
         switch (lhs, rhs) {
         case (.badServerResponse(let rCode), .badServerResponse(let lCode)):
             return rCode == lCode
+            
+        case (.parseJSONFail, .parseJSONFail):
+            return true
+            
+        default:
+            return false
         }
     }
 }

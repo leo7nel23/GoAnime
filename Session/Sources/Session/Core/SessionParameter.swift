@@ -22,7 +22,7 @@ public protocol SessionParameterProtocol {
     var anyAdapters: [RequestAdapter] { get }
 }
 
-extension SessionParameterProtocol {
+public extension SessionParameterProtocol {
     var requestModel: Encodable? { nil }
     var timeout: TimeInterval { 10 }
     var httpMethod: HTTPMethod { .get }
