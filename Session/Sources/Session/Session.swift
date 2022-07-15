@@ -44,7 +44,7 @@ public class Session {
     }
 }
 
-fileprivate extension SessionParameterProtocol {
+extension SessionParameterProtocol {
     func asURLRequest() throws -> URLRequest {
         guard let url = URL(string: path) else {
             throw SesssionError.requestError(.invalidURL(path))
