@@ -14,6 +14,9 @@ public class Session {
     
     let session: URLSession = {
         let config = URLSessionConfiguration.default
+        #if DEBUG_MODE
+        config.protocolClasses = [MockURLProtocol.self]
+        #endif
         return URLSession(configuration: config)
     }()
     
