@@ -8,6 +8,13 @@
 import Foundation
 import Combine
 
+let decoder: JSONDecoder = {
+    let decoder = JSONDecoder()
+    decoder.keyDecodingStrategy = .convertFromSnakeCase
+    decoder.dateDecodingStrategy = .iso8601
+    return decoder
+}()
+
 public class Session {
     public static let shared: Session = Session()
     private init() {}
@@ -22,7 +29,7 @@ public class Session {
     
     func request<T>(
         _ parameter: T,
-        decoder: JSONDecoder = JSONDecoder()
+        decoder: JSONDecoder = decoder
     ) -> AnyPublisher<T.Response, Error> where T: SessionParameterProtocol {
         do {
             return session
