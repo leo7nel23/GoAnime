@@ -12,18 +12,22 @@ class AppCoordinator: Coordinator {
     
     private var window: UIWindow
     private let rootViewController: UINavigationController
+    private let animeCoordinator: AnimeViewCoordinator
     
     init(window: UIWindow) {
         self.window = window
-        window.tintColor = .systemPink
+        window.tintColor = .systemTeal
         window.backgroundColor = .systemBackground
         
         rootViewController = UINavigationController()
         rootViewController.navigationBar.isTranslucent = false
+        
+        animeCoordinator = AnimeViewCoordinator(presenter: rootViewController)
     }
     
     func start() {
         window.rootViewController = rootViewController
+        animeCoordinator.start()
         window.makeKeyAndVisible()
     }
 }

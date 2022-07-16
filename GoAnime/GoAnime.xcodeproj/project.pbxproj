@@ -16,6 +16,10 @@
 		5590C8632880F9CB004C4A22 /* GoAnimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5590C8622880F9CB004C4A22 /* GoAnimeTests.swift */; };
 		5590C86D2880F9CB004C4A22 /* GoAnimeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5590C86C2880F9CB004C4A22 /* GoAnimeUITests.swift */; };
 		5590C86F2880F9CB004C4A22 /* GoAnimeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5590C86E2880F9CB004C4A22 /* GoAnimeUITestsLaunchTests.swift */; };
+		55AACC152882AB7400AF2240 /* AnimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AACC142882AB7400AF2240 /* AnimeViewController.swift */; };
+		55AACC172882AB8600AF2240 /* AnimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AACC162882AB8600AF2240 /* AnimeViewModel.swift */; };
+		55AACC192882ACFF00AF2240 /* AnimeViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AACC182882ACFF00AF2240 /* AnimeViewCoordinator.swift */; };
+		55AACC1B2882AD3500AF2240 /* AnimeViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AACC1A2882AD3500AF2240 /* AnimeViewInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		5590C8682880F9CB004C4A22 /* GoAnimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoAnimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5590C86C2880F9CB004C4A22 /* GoAnimeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoAnimeUITests.swift; sourceTree = "<group>"; };
 		5590C86E2880F9CB004C4A22 /* GoAnimeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoAnimeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		55AACC142882AB7400AF2240 /* AnimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeViewController.swift; sourceTree = "<group>"; };
+		55AACC162882AB8600AF2240 /* AnimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeViewModel.swift; sourceTree = "<group>"; };
+		55AACC182882ACFF00AF2240 /* AnimeViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeViewCoordinator.swift; sourceTree = "<group>"; };
+		55AACC1A2882AD3500AF2240 /* AnimeViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeViewInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +89,7 @@
 			children = (
 				55903DD22883021600FDC6F6 /* Coordinator.swift */,
 				55903DD42883023200FDC6F6 /* AppCoordinator.swift */,
+				55AACC182882ACFF00AF2240 /* AnimeViewCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -109,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				55903DD12883020700FDC6F6 /* Coordinator */,
+				55AACC132882AB4F00AF2240 /* AnimeView */,
 				5590C84B2880F9C9004C4A22 /* AppDelegate.swift */,
 				5590C84D2880F9C9004C4A22 /* SceneDelegate.swift */,
 				5590C87B2880FA94004C4A22 /* Assets */,
@@ -141,6 +151,16 @@
 				5590C8562880F9CB004C4A22 /* LaunchScreen.storyboard */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		55AACC132882AB4F00AF2240 /* AnimeView */ = {
+			isa = PBXGroup;
+			children = (
+				55AACC142882AB7400AF2240 /* AnimeViewController.swift */,
+				55AACC162882AB8600AF2240 /* AnimeViewModel.swift */,
+				55AACC1A2882AD3500AF2240 /* AnimeViewInteractor.swift */,
+			);
+			path = AnimeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,7 +294,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				55903DD32883021600FDC6F6 /* Coordinator.swift in Sources */,
+				55AACC172882AB8600AF2240 /* AnimeViewModel.swift in Sources */,
+				55AACC152882AB7400AF2240 /* AnimeViewController.swift in Sources */,
+				55AACC1B2882AD3500AF2240 /* AnimeViewInteractor.swift in Sources */,
 				5590C84C2880F9C9004C4A22 /* AppDelegate.swift in Sources */,
+				55AACC192882ACFF00AF2240 /* AnimeViewCoordinator.swift in Sources */,
 				55903DD52883023200FDC6F6 /* AppCoordinator.swift in Sources */,
 				5590C84E2880F9C9004C4A22 /* SceneDelegate.swift in Sources */,
 			);
