@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55903DD32883021600FDC6F6 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55903DD22883021600FDC6F6 /* Coordinator.swift */; };
+		55903DD52883023200FDC6F6 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55903DD42883023200FDC6F6 /* AppCoordinator.swift */; };
 		5590C84C2880F9C9004C4A22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5590C84B2880F9C9004C4A22 /* AppDelegate.swift */; };
 		5590C84E2880F9C9004C4A22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5590C84D2880F9C9004C4A22 /* SceneDelegate.swift */; };
-		5590C8502880F9C9004C4A22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5590C84F2880F9C9004C4A22 /* ViewController.swift */; };
 		5590C8552880F9CB004C4A22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5590C8542880F9CB004C4A22 /* Assets.xcassets */; };
 		5590C8582880F9CB004C4A22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5590C8562880F9CB004C4A22 /* LaunchScreen.storyboard */; };
 		5590C8632880F9CB004C4A22 /* GoAnimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5590C8622880F9CB004C4A22 /* GoAnimeTests.swift */; };
@@ -35,10 +36,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		55903DD22883021600FDC6F6 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		55903DD42883023200FDC6F6 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		5590C8482880F9C9004C4A22 /* GoAnime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoAnime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5590C84B2880F9C9004C4A22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5590C84D2880F9C9004C4A22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5590C84F2880F9C9004C4A22 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5590C8542880F9CB004C4A22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5590C8572880F9CB004C4A22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5590C8592880F9CB004C4A22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -74,6 +76,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55903DD12883020700FDC6F6 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				55903DD22883021600FDC6F6 /* Coordinator.swift */,
+				55903DD42883023200FDC6F6 /* AppCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
 		5590C83F2880F9C9004C4A22 = {
 			isa = PBXGroup;
 			children = (
@@ -97,9 +108,9 @@
 		5590C84A2880F9C9004C4A22 /* GoAnime */ = {
 			isa = PBXGroup;
 			children = (
+				55903DD12883020700FDC6F6 /* Coordinator */,
 				5590C84B2880F9C9004C4A22 /* AppDelegate.swift */,
 				5590C84D2880F9C9004C4A22 /* SceneDelegate.swift */,
-				5590C84F2880F9C9004C4A22 /* ViewController.swift */,
 				5590C87B2880FA94004C4A22 /* Assets */,
 				5590C8592880F9CB004C4A22 /* Info.plist */,
 			);
@@ -262,8 +273,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5590C8502880F9C9004C4A22 /* ViewController.swift in Sources */,
+				55903DD32883021600FDC6F6 /* Coordinator.swift in Sources */,
 				5590C84C2880F9C9004C4A22 /* AppDelegate.swift in Sources */,
+				55903DD52883023200FDC6F6 /* AppCoordinator.swift in Sources */,
 				5590C84E2880F9C9004C4A22 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

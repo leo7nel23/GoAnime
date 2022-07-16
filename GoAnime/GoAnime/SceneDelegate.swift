@@ -8,8 +8,8 @@
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
     var window: UIWindow?
+    var coordinator: AppCoordinator?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -19,9 +19,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = ViewController()
+        let coordinator = AppCoordinator(window: window)
+        
         self.window = window
-        window.makeKeyAndVisible()
+        self.coordinator = coordinator
+        coordinator.start()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
