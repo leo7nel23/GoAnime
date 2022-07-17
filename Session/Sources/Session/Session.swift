@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import TestHelper
 
 public let decoder: JSONDecoder = {
     let decoder = JSONDecoder()

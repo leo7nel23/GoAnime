@@ -8,9 +8,9 @@
 import Foundation
 import Combine
 
-extension Publisher {
+public extension Publisher {
     @discardableResult
-    public func asyncSinked() async throws -> Output? {
+    func asyncSinked() async throws -> Output? {
         try await withCheckedThrowingContinuation { continuation in
             var cancellable: AnyCancellable?
             var output: Output?

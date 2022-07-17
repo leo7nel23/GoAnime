@@ -8,6 +8,7 @@
 import XCTest
 import Foundation
 @testable import Session
+import TestHelper
 
 class SessionAPITests: XCTestCase {
     let formatter: DateFormatter = {
