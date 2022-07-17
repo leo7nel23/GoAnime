@@ -10,7 +10,7 @@ import XCTest
 import Session
 @testable import GoAnime
 
-class AnimeItemInfoModelTests: XCTestCase {
+final class AnimeItemInfoModelTests: XCTestCase {
     func test_AnimeItemType_Encode() throws {
         struct MockType: Codable {
             var type: AnimeItemType

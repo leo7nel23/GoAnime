@@ -13,7 +13,7 @@ protocol FavoriteAnimeRepositoryProtocol {
     func removeFavorite(item: AnimeItemModel) -> AnimeItemModel
 }
 
-class FavoriteAnimeRepository: FavoriteAnimeRepositoryProtocol {
+final class FavoriteAnimeRepository: FavoriteAnimeRepositoryProtocol {
     private static let favoriteItemKey: String = "favoriteItemKey"
     
     private let storage: ItemStorageProtocol

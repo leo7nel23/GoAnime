@@ -17,8 +17,12 @@
 		55903DE42883E8B100FDC6F6 /* FavoriteItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55903DE32883E8B100FDC6F6 /* FavoriteItemTests.swift */; };
 		55903DE72883EBF900FDC6F6 /* AnimeItemInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55903DE62883EBF900FDC6F6 /* AnimeItemInfoModel.swift */; };
 		55903DE92883F10200FDC6F6 /* AnimeItemInfoModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55903DE82883F10200FDC6F6 /* AnimeItemInfoModelTests.swift */; };
-		55903DEB288400C200FDC6F6 /* SessionInteractoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55903DEA288400C200FDC6F6 /* SessionInteractoreTests.swift */; };
+		55903DEB288400C200FDC6F6 /* SessionInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55903DEA288400C200FDC6F6 /* SessionInteractorTests.swift */; };
 		55903DEF2884070400FDC6F6 /* TestHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 55903DEE2884070400FDC6F6 /* TestHelper */; };
+		55903DF1288448B200FDC6F6 /* Utility in Frameworks */ = {isa = PBXBuildFile; productRef = 55903DF0288448B200FDC6F6 /* Utility */; };
+		55903DF428844AFA00FDC6F6 /* PageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55903DF328844AFA00FDC6F6 /* PageHandler.swift */; };
+		55903DF628844D6000FDC6F6 /* AnimeInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55903DF528844D6000FDC6F6 /* AnimeInteractorTests.swift */; };
+		55903DF828844D8D00FDC6F6 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55903DF728844D8D00FDC6F6 /* Helper.swift */; };
 		5590C84C2880F9C9004C4A22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5590C84B2880F9C9004C4A22 /* AppDelegate.swift */; };
 		5590C84E2880F9C9004C4A22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5590C84D2880F9C9004C4A22 /* SceneDelegate.swift */; };
 		5590C8552880F9CB004C4A22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5590C8542880F9CB004C4A22 /* Assets.xcassets */; };
@@ -59,7 +63,10 @@
 		55903DE32883E8B100FDC6F6 /* FavoriteItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemTests.swift; sourceTree = "<group>"; };
 		55903DE62883EBF900FDC6F6 /* AnimeItemInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeItemInfoModel.swift; sourceTree = "<group>"; };
 		55903DE82883F10200FDC6F6 /* AnimeItemInfoModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeItemInfoModelTests.swift; sourceTree = "<group>"; };
-		55903DEA288400C200FDC6F6 /* SessionInteractoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInteractoreTests.swift; sourceTree = "<group>"; };
+		55903DEA288400C200FDC6F6 /* SessionInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionInteractorTests.swift; sourceTree = "<group>"; };
+		55903DF328844AFA00FDC6F6 /* PageHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageHandler.swift; sourceTree = "<group>"; };
+		55903DF528844D6000FDC6F6 /* AnimeInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeInteractorTests.swift; sourceTree = "<group>"; };
+		55903DF728844D8D00FDC6F6 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		5590C8482880F9C9004C4A22 /* GoAnime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoAnime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5590C84B2880F9C9004C4A22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5590C84D2880F9C9004C4A22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55903DF1288448B200FDC6F6 /* Utility in Frameworks */,
 				55903DEF2884070400FDC6F6 /* TestHelper in Frameworks */,
 				55903DD82883DC1C00FDC6F6 /* Session in Frameworks */,
 			);
@@ -147,6 +155,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		55903DF228844AEC00FDC6F6 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				55AACC1A2882AD3500AF2240 /* AnimeViewInteractor.swift */,
+				55903DD92883DF2D00FDC6F6 /* Session+Repository.swift */,
+				55903DF328844AFA00FDC6F6 /* PageHandler.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
 		5590C83F2880F9C9004C4A22 = {
 			isa = PBXGroup;
 			children = (
@@ -189,7 +207,9 @@
 				5590C8622880F9CB004C4A22 /* GoAnimeTests.swift */,
 				55903DE32883E8B100FDC6F6 /* FavoriteItemTests.swift */,
 				55903DE82883F10200FDC6F6 /* AnimeItemInfoModelTests.swift */,
-				55903DEA288400C200FDC6F6 /* SessionInteractoreTests.swift */,
+				55903DEA288400C200FDC6F6 /* SessionInteractorTests.swift */,
+				55903DF528844D6000FDC6F6 /* AnimeInteractorTests.swift */,
+				55903DF728844D8D00FDC6F6 /* Helper.swift */,
 			);
 			path = GoAnimeTests;
 			sourceTree = "<group>";
@@ -215,10 +235,9 @@
 		55AACC132882AB4F00AF2240 /* AnimeView */ = {
 			isa = PBXGroup;
 			children = (
+				55903DF228844AEC00FDC6F6 /* Interactor */,
 				55AACC142882AB7400AF2240 /* AnimeViewController.swift */,
 				55AACC162882AB8600AF2240 /* AnimeViewModel.swift */,
-				55AACC1A2882AD3500AF2240 /* AnimeViewInteractor.swift */,
-				55903DD92883DF2D00FDC6F6 /* Session+Repository.swift */,
 			);
 			path = AnimeView;
 			sourceTree = "<group>";
@@ -242,6 +261,7 @@
 			packageProductDependencies = (
 				55903DD72883DC1C00FDC6F6 /* Session */,
 				55903DEE2884070400FDC6F6 /* TestHelper */,
+				55903DF0288448B200FDC6F6 /* Utility */,
 			);
 			productName = GoAnime;
 			productReference = 5590C8482880F9C9004C4A22 /* GoAnime.app */;
@@ -360,6 +380,7 @@
 				55903DD32883021600FDC6F6 /* Coordinator.swift in Sources */,
 				55AACC172882AB8600AF2240 /* AnimeViewModel.swift in Sources */,
 				55AACC152882AB7400AF2240 /* AnimeViewController.swift in Sources */,
+				55903DF428844AFA00FDC6F6 /* PageHandler.swift in Sources */,
 				55903DDF2883E39500FDC6F6 /* ItemStorage.swift in Sources */,
 				55AACC1B2882AD3500AF2240 /* AnimeViewInteractor.swift in Sources */,
 				5590C84C2880F9C9004C4A22 /* AppDelegate.swift in Sources */,
@@ -380,7 +401,9 @@
 				55903DE42883E8B100FDC6F6 /* FavoriteItemTests.swift in Sources */,
 				55903DE92883F10200FDC6F6 /* AnimeItemInfoModelTests.swift in Sources */,
 				5590C8632880F9CB004C4A22 /* GoAnimeTests.swift in Sources */,
-				55903DEB288400C200FDC6F6 /* SessionInteractoreTests.swift in Sources */,
+				55903DF628844D6000FDC6F6 /* AnimeInteractorTests.swift in Sources */,
+				55903DEB288400C200FDC6F6 /* SessionInteractorTests.swift in Sources */,
+				55903DF828844D8D00FDC6F6 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -713,6 +736,10 @@
 		55903DEE2884070400FDC6F6 /* TestHelper */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = TestHelper;
+		};
+		55903DF0288448B200FDC6F6 /* Utility */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Utility;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

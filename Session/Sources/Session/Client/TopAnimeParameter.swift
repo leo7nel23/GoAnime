@@ -44,8 +44,9 @@ public enum AnimeType: String, Codable {
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        let rawString = try container.decode(String.self)
+        var rawString = try container.decode(String.self)
         
+        rawString = rawString.replacingOccurrences(of: " ", with: "")
         if let type = AnimeType(rawValue: rawString.lowercased()) {
             self = type
         } else {

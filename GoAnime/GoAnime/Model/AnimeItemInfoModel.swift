@@ -8,7 +8,7 @@
 import Foundation
 import Session
 
-class AnimeItemInfoModel: Codable {
+final class AnimeItemInfoModel: Codable {
     var currentPage: Int = 0
     var hasNextPage: Bool = false
     var animeItems: [AnimeItemModel] = []
@@ -24,7 +24,7 @@ class AnimeItemInfoModel: Codable {
     }
 }
 
-class AnimeItemModel: Codable, Identifiable {
+final class AnimeItemModel: Codable, Identifiable {
     var id: String = ""
     var isFavorite: Bool = false
     

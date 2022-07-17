@@ -9,7 +9,7 @@ import Foundation
 import XCTest
 @testable import GoAnime
 
-class MockItemStorage: ItemStorageProtocol {
+final class MockItemStorage: ItemStorageProtocol {
     var storage: [String: Data] = [:]
     
     func set(item: Data, for key: String) { storage[key] = item }
@@ -20,7 +20,7 @@ class MockItemStorage: ItemStorageProtocol {
     }
 }
 
-class FavoriteAnimeRepositoryTests: XCTestCase {
+final class FavoriteAnimeRepositoryTests: XCTestCase {
     func test_request_Favorite() async throws {
         let model = AnimeItemModel(
             malId: 10,
