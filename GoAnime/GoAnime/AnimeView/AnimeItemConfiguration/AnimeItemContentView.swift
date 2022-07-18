@@ -122,7 +122,7 @@ final class AnimeItemContentView: UIView, UIContentView {
     
     func configure(with config: AnimeItemConfiguration) {
         imageView.setImage(config.imageUrl)
-        rankLabel.text = "\(config.rank)"
+        rankLabel.text = config.rank
         titleLabel.text = config.title
         dateLabel.text = config.dateText
         typeLabel.text = config.type

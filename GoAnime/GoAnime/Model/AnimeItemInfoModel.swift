@@ -33,7 +33,7 @@ final class AnimeItemModel: Codable, Identifiable {
     var imageUrl: String
     var thumbnailUrl: String
     var title: String
-    var rank: Int
+    var rank: Int?
     var type: AnimeItemType
     var fromDate: Date?
     var toDate: Date?
@@ -44,7 +44,7 @@ final class AnimeItemModel: Codable, Identifiable {
         imageUrl: String,
         thumbnailUrl: String,
         title: String,
-        rank: Int,
+        rank: Int?,
         type: AnimeItemType,
         fromDate: Date?,
         toDate: Date?

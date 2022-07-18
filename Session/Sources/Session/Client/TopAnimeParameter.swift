@@ -33,7 +33,7 @@ public struct TopAnimeParameter: SessionParameterProtocol {
     }
 }
 
-public enum AnimeType: String, Codable {
+public enum AnimeType: String, Codable, CaseIterable {
     case tv
     case movie
     case ova
@@ -106,7 +106,7 @@ public struct AnimeItem: Codable {
     public var url: String
     public var images: Images
     public var title: String
-    public var rank: Int
+    public var rank: Int?
     public var type: AnimeType
     public var aired: Aired
     
@@ -115,7 +115,7 @@ public struct AnimeItem: Codable {
         url: String,
         images: AnimeItem.Images,
         title: String,
-        rank: Int,
+        rank: Int?,
         type: AnimeType,
         aired: AnimeItem.Aired
     ) {

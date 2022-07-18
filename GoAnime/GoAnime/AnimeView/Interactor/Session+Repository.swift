@@ -50,7 +50,7 @@ extension TopAnimeModel {
         AnimeItemInfoModel(
             currentPage: pagination.currentPage,
             hasNextPage: pagination.hasNextPage,
-            animeItems: data.map { $0.asAnimeItemModel(filter: filter )}
+            animeItems: data.map { $0.asAnimeItemModel(filter: filter ) }
         )
     }
 }

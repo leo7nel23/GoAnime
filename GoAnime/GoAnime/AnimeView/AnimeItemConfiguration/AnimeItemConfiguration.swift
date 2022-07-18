@@ -28,7 +28,14 @@ final class AnimeItemConfiguration: UIContentConfiguration, Identifiable {
     var imageUrl: String { model.imageUrl }
     var title: String { model.title }
     var type: String { model.type.rawValue }
-    var rank: Int { model.rank }
+    var rank: String {
+        if let rank = model.rank {
+            return String(rank)
+        } else {
+            return "-"
+        }
+        
+    }
     var fromDate: Date? { model.fromDate }
     var toDate: Date? { model.toDate }
     @Published var hideRank: Bool = false

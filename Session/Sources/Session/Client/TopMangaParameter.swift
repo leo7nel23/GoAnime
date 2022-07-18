@@ -33,7 +33,7 @@ public struct TopMangaParameter: SessionParameterProtocol {
     }
 }
 
-public enum MangaType: String, Codable {
+public enum MangaType: String, Codable, CaseIterable {
     case manga
     case novel
     case lightnovel
@@ -108,7 +108,7 @@ public struct MangaItem: Codable {
     public var url: String
     public var images: Images
     public var title: String
-    public var rank: Int
+    public var rank: Int?
     public var type: MangaType
     public var published: Published
     
@@ -117,7 +117,7 @@ public struct MangaItem: Codable {
         url: String,
         images: MangaItem.Images,
         title: String,
-        rank: Int,
+        rank: Int?,
         type: MangaType,
         published: MangaItem.Published
     ) {

@@ -40,8 +40,7 @@ final class AnimeViewModel {
     private var cancellable: Set<AnyCancellable> = []
     
     var segmentSelectedIndex: Int { segmentType.rawValue }
-    private var segmentType: AnimeSegmentType = .manga
-    private var animeItemType: AnimeItemType = .manga(.all, .none) {
+    private var animeItemType: AnimeItemType = .favorite(.all) {
         didSet {
             interactor.reload(type: animeItemType)
         }
@@ -50,6 +49,7 @@ final class AnimeViewModel {
     var secionCount: Int = 1
     @Published private(set) var cellConfigurations: [AnimeItemConfiguration] = []
     @Published private(set) var loadMoreState: LoadMoreState = .none
+    @Published var segmentType: AnimeSegmentType = .favorite
     
     init(
         coordinator: AnimeViewCoordinatorProtocol,
@@ -58,12 +58,12 @@ final class AnimeViewModel {
         self.coordinator = coordinator
         self.interactor = interactor
         bindPublisers()
-        interactor.reload(type: animeItemType)
     }
     
     private func bindPublisers() {
         interactor
             .animesPublisher
+            .dropFirst()
             .sink { [weak self] models in
                 guard let self = self else { return }
                 self.cellConfigurations = models.lazy.map {

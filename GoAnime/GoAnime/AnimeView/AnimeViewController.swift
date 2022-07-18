@@ -55,6 +55,13 @@ final class AnimeViewController: UIViewController {
     private typealias DataSource = UICollectionViewDiffableDataSource<Section, String>
     private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, String>
     private lazy var dataSource: DataSource = makeDataSource()
+    private lazy var barItem: UIBarButtonItem = {
+        UIBarButtonItem(
+            barButtonSystemItem: .search,
+            target: self,
+            action: #selector(searchDidSelect(_:))
+        )
+    }()
     
     init(viewModel: AnimeViewModel) {
         self.viewModel = viewModel
@@ -69,6 +76,7 @@ final class AnimeViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         bindPublishers()
+        viewModel.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -114,11 +122,6 @@ final class AnimeViewController: UIViewController {
             collectionView.widthAnchor.constraint(equalTo: view.widthAnchor)
         ])
         
-        let barItem = UIBarButtonItem(
-            barButtonSystemItem: .search,
-            target: self,
-            action: #selector(searchDidSelect(_:))
-        )
         navigationItem.rightBarButtonItem = barItem
         collectionView.delegate = self
         collectionView.refreshControl = refreshControl
@@ -153,6 +156,14 @@ final class AnimeViewController: UIViewController {
                 case .error(let text):
                     print("Error: \(text)")
                 }
+            }
+            .store(in: &cancellable)
+        
+        viewModel
+            .$segmentType
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                self?.navigationItem.rightBarButtonItem = ($0 == .favorite) ? nil : self?.barItem
             }
             .store(in: &cancellable)
     }
