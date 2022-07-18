@@ -55,6 +55,7 @@ public extension UIImageView {
         handler: ImageCacheHandler = ImageCacheHandler.shared
     ) {
         guard let url = URL(string: path) else { return }
+        image = nil
         Task {
             image = try? await handler.loadImage(url: url)
         }
