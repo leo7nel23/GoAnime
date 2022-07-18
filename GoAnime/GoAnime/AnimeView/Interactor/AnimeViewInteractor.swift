@@ -22,6 +22,9 @@ protocol AnimeViewInteractorProtocol {
     
     func reload(type: AnimeItemType)
     func loadMore(type: AnimeItemType)
+    
+    func addFavorite(item: AnimeItemModel)
+    func removeFavorite(item: AnimeItemModel)
 }
 
 enum AnimeItemType: Codable {
@@ -81,11 +84,11 @@ final class AnimeViewInteractor: AnimeViewInteractorProtocol {
         cancellable = nil
         loadingState = .loading
         currentType = type
+        animes = []
         if type.isFavorit {
             let info = AnimeItemInfoModel(currentPage: 1, hasNextPage: false, animeItems: favoriteRepository.favoriteItems())
             processAnime(info: info, type: type, isReload: true)
         } else {
-            animes = []
             cancellable = animeRepository
                 .topAnime(
                     type: type, page: 1, mockData: nil)
@@ -125,6 +128,14 @@ final class AnimeViewInteractor: AnimeViewInteractorProtocol {
             })
     }
     
+    func addFavorite(item: AnimeItemModel) {
+        favoriteRepository.addFavorite(item: item)
+    }
+    
+    func removeFavorite(item: AnimeItemModel) {
+        favoriteRepository.removeFavorite(item: item)
+    }
+    
     private func nextPage(type: AnimeItemType) -> Int? {
         let page = pageHandler.currentPageInfo(for: type)
         
@@ -141,6 +152,12 @@ final class AnimeViewInteractor: AnimeViewInteractorProtocol {
                 hasNextPage: info.hasNextPage,
                 type: type
             )
+        
+        let items = info.animeItems
+        let favorite = favoriteRepository.favoriteItems()
+        items.forEach { item in
+            item.isFavorite = favorite.contains(where: { $0.id == item.id })
+        }
         
         if isReload {
             animes = info.animeItems

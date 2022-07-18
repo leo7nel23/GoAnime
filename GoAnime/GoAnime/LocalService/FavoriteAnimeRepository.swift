@@ -9,8 +9,8 @@ import Foundation
 
 protocol FavoriteAnimeRepositoryProtocol {
     func favoriteItems() -> [AnimeItemModel]
-    func addFavorite(item: AnimeItemModel) -> AnimeItemModel
-    func removeFavorite(item: AnimeItemModel) -> AnimeItemModel
+    @discardableResult func addFavorite(item: AnimeItemModel) -> AnimeItemModel
+    @discardableResult func removeFavorite(item: AnimeItemModel) -> AnimeItemModel
 }
 
 final class FavoriteAnimeRepository: FavoriteAnimeRepositoryProtocol {

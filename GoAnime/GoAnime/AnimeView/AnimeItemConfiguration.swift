@@ -10,7 +10,12 @@ import UIKit
 import Utility
 import Combine
 
+protocol AnimeItemConfigurationDelegate: AnyObject {
+    func configuration(_ config: AnimeItemConfiguration, didTapFavorite model: AnimeItemModel)
+}
+
 final class AnimeItemConfiguration: UIContentConfiguration, Identifiable {
+    weak var delegate: AnimeItemConfigurationDelegate?
     static let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateFormat = "YYYY-MM-dd"
@@ -26,6 +31,7 @@ final class AnimeItemConfiguration: UIContentConfiguration, Identifiable {
     var rank: Int { model.rank }
     var fromDate: Date? { model.fromDate }
     var toDate: Date? { model.toDate }
+    @Published var hideRank: Bool = false
     @Published var isFavorite: Bool
     
     
@@ -45,6 +51,7 @@ final class AnimeItemConfiguration: UIContentConfiguration, Identifiable {
     
     func favoriteDidTapped() {
         isFavorite = !isFavorite
+        delegate?.configuration(self, didTapFavorite: model)
     }
     
     var dateText: String {
@@ -70,14 +77,14 @@ final class AnimeItemContentView: UIView, UIContentView {
         }
     }
     
-    private let imageView: UIImageView = {
+    private lazy var imageView: UIImageView = {
         let i = UIImageView()
         i.contentMode = .scaleAspectFit
         i.backgroundColor = .systemGray6
         return i
     }()
     
-    private let titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let l = UILabel()
         l.numberOfLines = 0
         l.font = .preferredFont(forTextStyle: .headline)
@@ -86,7 +93,7 @@ final class AnimeItemContentView: UIView, UIContentView {
         return l
     }()
     
-    private let rankLabel: UILabel = {
+    private lazy var rankLabel: UILabel = {
         let l = UILabel()
         l.font = .preferredFont(forTextStyle: .title1)
         l.textColor = .secondaryLabel
@@ -96,28 +103,29 @@ final class AnimeItemContentView: UIView, UIContentView {
         return l
     }()
     
-    private let typeLabel: UILabel = {
+    private lazy var typeLabel: UILabel = {
         let l = UILabel()
         l.font = .preferredFont(forTextStyle: .caption1)
         l.textColor = .secondaryLabel
         return l
     }()
     
-    private let dateLabel: UILabel = {
+    private lazy var dateLabel: UILabel = {
         let l = UILabel()
         l.font = .preferredFont(forTextStyle: .caption1)
         l.textColor = .secondaryLabel
         return l
     }()
-    private let addToFavoriteButton: UIButton = {
+    private lazy var addToFavoriteButton: UIButton = {
         let b = UIButton(type: .custom)
         b.setImage(UIImage(systemName: "heart"), for: .normal)
         b.setImage(UIImage(systemName: "heart.fill"), for: .selected)
+        b.addTarget(self, action: #selector(addFavoriteDidTapped(_:)), for: .touchUpInside)
         return b
         
     }()
     
-    var cancellable: AnyCancellable?
+    var cancellable: Set<AnyCancellable> = []
     
     init(_ configuration: AnimeItemConfiguration) {
         self.configuration = configuration
@@ -179,12 +187,21 @@ final class AnimeItemContentView: UIView, UIContentView {
         typeLabel.text = config.type
         addToFavoriteButton.isSelected = config.isFavorite
         
-        cancellable = config
+        config
+            .$hideRank
+            .receive(on: DispatchQueue.main)
+            .sink {
+                self.rankLabel.isHidden = $0
+            }
+            .store(in: &cancellable)
+        
+        config
             .$isFavorite
             .receive(on: DispatchQueue.main)
             .sink { [weak self] in
                 self?.addToFavoriteButton.isSelected = $0
             }
+            .store(in: &cancellable)
     }
     
     @objc func addFavoriteDidTapped(_ sender: UIButton) {

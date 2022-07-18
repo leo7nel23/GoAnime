@@ -131,7 +131,7 @@ final class AnimeViewController: UIViewController {
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: { [weak self] configurations in
                 guard let self = self else { return }
-                print("reload $cellViewModels")
+                
                 var snapshot = Snapshot()
                 snapshot.appendSections([.anime])
                 snapshot.appendItems(configurations.map(\.id), toSection: .anime)
@@ -161,6 +161,7 @@ final class AnimeViewController: UIViewController {
 // Action
 extension AnimeViewController {
     @objc func searchDidSelect(_ sender: UIBarButtonItem) {
+        viewModel.searhDidTap()
     }
     
     @objc func segmentDidUpdate(_ sender: UISegmentedControl) {
