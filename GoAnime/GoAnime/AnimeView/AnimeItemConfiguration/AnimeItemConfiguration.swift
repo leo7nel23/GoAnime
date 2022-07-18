@@ -34,8 +34,8 @@ final class AnimeItemConfiguration: UIContentConfiguration, Identifiable {
         } else {
             return "-"
         }
-        
     }
+    
     var fromDate: Date? { model.fromDate }
     var toDate: Date? { model.toDate }
     @Published var hideRank: Bool = false

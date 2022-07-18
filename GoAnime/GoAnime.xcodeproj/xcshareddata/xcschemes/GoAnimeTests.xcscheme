@@ -33,6 +33,26 @@
                ReferencedContainer = "container:../Session">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "TestHelperTests"
+               BuildableName = "TestHelperTests"
+               BlueprintName = "TestHelperTests"
+               ReferencedContainer = "container:../Utility">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "UtilityTests"
+               BuildableName = "UtilityTests"
+               BlueprintName = "UtilityTests"
+               ReferencedContainer = "container:../Utility">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

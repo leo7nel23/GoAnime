@@ -41,7 +41,7 @@ final class AnimeViewController: UIViewController {
     }()
     
     private lazy var indicator: UIActivityIndicatorView = {
-        let i = UIActivityIndicatorView(style: .medium)
+        let i = UIActivityIndicatorView(style: .large)
         i.startAnimating()
         i.translatesAutoresizingMaskIntoConstraints = false
         return i
@@ -152,7 +152,7 @@ final class AnimeViewController: UIViewController {
                 case .none, .finished:
                     self?.indicator.isHidden = true
                 case .loading:
-                    self?.indicator.isHidden = false
+                    self?.indicator.isHidden = self?.viewModel.cellConfigurations.count != 0
                 case .error(let text):
                     print("Error: \(text)")
                 }

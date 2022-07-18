@@ -111,7 +111,7 @@ final class AnimeItemContentView: UIView, UIContentView {
             
             rankLabel.widthAnchor.constraint(equalToConstant: 40),
             imageView.widthAnchor.constraint(equalToConstant: 60),
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1.5),
+            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: 1.5)
         ])
         
         configure(with: configuration)
