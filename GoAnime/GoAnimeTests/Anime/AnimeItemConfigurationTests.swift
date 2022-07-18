@@ -24,6 +24,9 @@ final class AnimeItemConfigurationTests: XCTestCase {
         XCTAssertEqual(config.isFavorite, item.isFavorite)
         
         XCTAssertEqual(config.dateText, "2022-07-18 ~ 2022-07-18")
+        
+        item.rank = nil
+        XCTAssertEqual(config.rank, "-")
     }
     
     func test_configuraton_ViewType() {

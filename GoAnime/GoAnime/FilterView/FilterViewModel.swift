@@ -70,7 +70,7 @@ final class FilterViewModel {
         case .manga:
             return FilterContentViewModel(type: .type, types: MangaType.types())
         case .favorite:
-            return FilterContentViewModel(type: .type, types: AnimeType.types())
+            return nil
         }
     }
     
