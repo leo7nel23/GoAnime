@@ -63,6 +63,6 @@ final class SessionInteractorTests: XCTestCase {
         XCTAssertEqual(item?.rank, 768)
         XCTAssertEqual(item?.type, .manga(.manga, .airing))
         XCTAssertEqual(formatter.string(from: item?.fromDate ?? Date()), "2014-04-07")
-        XCTAssertEqual(formatter.string(from: item?.toDate ?? Date()), "2022-07-17")
+        XCTAssertEqual(formatter.string(from: item?.toDate ?? Date()), "2022-07-18")
     }
 }

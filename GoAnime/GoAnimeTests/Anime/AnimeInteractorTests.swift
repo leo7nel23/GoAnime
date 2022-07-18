@@ -12,17 +12,18 @@ import Session
 import TestHelper
 import Combine
 
-final class AnimeInteractorTests: XCTestCase {
-    final class MockAnimeRepository: AnimeRepositoryProtocol {
-        var response: AnimeItemInfoModel = AnimeItemInfoModel(currentPage: 0, hasNextPage: true, animeItems: [])
-        var error: Error?
-        func topAnime(type: AnimeItemType, page: Int, mockData: DataConvertible?) -> AnyPublisher<AnimeItemInfoModel, Error> {
-            if let error = error {
-                return Fail(error: error).eraseToAnyPublisher()
-            }
-            return CurrentValueSubject<AnimeItemInfoModel, Error>(response).eraseToAnyPublisher()
+final class MockAnimeRepository: AnimeRepositoryProtocol {
+    var response: AnimeItemInfoModel = AnimeItemInfoModel(currentPage: 0, hasNextPage: true, animeItems: [])
+    var error: Error?
+    func topAnime(type: AnimeItemType, page: Int, mockData: DataConvertible?) -> AnyPublisher<AnimeItemInfoModel, Error> {
+        if let error = error {
+            return Fail(error: error).eraseToAnyPublisher()
         }
+        return CurrentValueSubject<AnimeItemInfoModel, Error>(response).eraseToAnyPublisher()
     }
+}
+
+final class AnimeInteractorTests: XCTestCase {
     var cancellable: Set<AnyCancellable> = []
     
     let decoder: JSONDecoder = {
@@ -47,6 +48,7 @@ final class AnimeInteractorTests: XCTestCase {
             .animesPublisher
             .dropFirst()
             .sink { models in
+                guard models.count != 0 else { return } // 暫態清空，略
                 XCTAssertEqual(models.count, targetCount)
                 exp.fulfill()
             }
@@ -113,6 +115,7 @@ final class AnimeInteractorTests: XCTestCase {
             .animesPublisher
             .dropFirst()
             .sink { models in
+                guard models.count != 0 else { return } // 暫態清空，略
                 XCTAssertEqual(models.count, targetCount)
                 exp.fulfill()
             }
@@ -165,6 +168,7 @@ final class AnimeInteractorTests: XCTestCase {
             .animesPublisher
             .dropFirst()
             .sink { models in
+                guard models.count != 0 else { return } // 暫態清空，略
                 XCTAssertEqual(models.count, targetCount)
                 exp.fulfill()
             }
@@ -223,5 +227,32 @@ final class AnimeInteractorTests: XCTestCase {
         
         XCTAssertEqual(page2.page, 10)
         XCTAssertEqual(page2.hasNextPage, true)
+    }
+    
+    func test_addFavorite() {
+        let favoriteRepository = FavoriteAnimeRepository(storage: MockItemStorage())
+        let interactor = AnimeViewInteractor(
+            animeRepository: MockAnimeRepository(),
+            favoriteRepository: favoriteRepository
+        )
+        
+        let item = AnimeItemModel(
+            malId: 10,
+            url: "url",
+            imageUrl: "imageUrl",
+            thumbnailUrl: "thumbnailUrl",
+            title: "title",
+            rank: 100,
+            type: .manga(.all, .none),
+            fromDate: Date(),
+            toDate: Date()
+        )
+        
+        interactor.addFavorite(item: item)
+        
+        XCTAssertTrue(item.isFavorite)
+        
+        interactor.removeFavorite(item: item)
+        XCTAssertFalse(item.isFavorite)
     }
 }
