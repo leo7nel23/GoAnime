@@ -10,14 +10,15 @@ import Foundation
 import XCTest
 
 final class MockCoordinator: AnimeViewCoordinatorProtocol {
+    
     var modelDidTap: ((AnimeItemModel) -> Void)?
-    var routeSearch: (() -> Void)?
+    var routeSearch: ((AnimeItemType, FilterViewModelDelegate?) -> Void)?
     func anime(modelDidTap model: AnimeItemModel) {
         modelDidTap?(model)
     }
     
-    func routeToSearch() {
-        routeSearch?()
+    func routeToSearch(animeType: AnimeItemType, delegate: FilterViewModelDelegate?) {
+        routeSearch?(animeType, delegate)
     }
 }
 
@@ -71,7 +72,7 @@ final class AnimeCoordinatorTests: XCTestCase {
         vm.reloadData()
         
         let exp = expectation(description: #function)
-        coordinator.routeSearch = {
+        coordinator.routeSearch = { _, _ in
             exp.fulfill()
         }
         vm.searhDidTap()

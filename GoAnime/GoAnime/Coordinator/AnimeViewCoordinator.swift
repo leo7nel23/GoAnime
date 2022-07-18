@@ -12,15 +12,17 @@ import SafariServices
 
 protocol AnimeViewCoordinatorProtocol: AnyObject {
     func anime(modelDidTap model: AnimeItemModel)
-    func routeToSearch()
+    func routeToSearch(animeType: AnimeItemType, delegate: FilterViewModelDelegate?)
 }
 
 final class AnimeViewCoordinator: Coordinator, AnimeViewCoordinatorProtocol {
     private let presenter: UINavigationController
     private var animeViewController: AnimeViewController?
+    private let nextCoordinator: FilterCoordinator
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
+        self.nextCoordinator = FilterCoordinator(presenter: presenter)
     }
     
     func start() {
@@ -43,7 +45,12 @@ final class AnimeViewCoordinator: Coordinator, AnimeViewCoordinatorProtocol {
         presenter.present(safari, animated: true)
     }
     
-    func routeToSearch() {
-        
+    func routeToSearch(
+        animeType: AnimeItemType,
+        delegate: FilterViewModelDelegate?
+    ) {
+        nextCoordinator.updateAnimeType(animeType: animeType)
+        nextCoordinator.update(delegate: delegate)
+        nextCoordinator.start()
     }
 }
