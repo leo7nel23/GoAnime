@@ -17,7 +17,6 @@ protocol AnimeViewCoordinatorProtocol: AnyObject {
 
 final class AnimeViewCoordinator: Coordinator, AnimeViewCoordinatorProtocol {
     private let presenter: UINavigationController
-    private var animeViewController: AnimeViewController?
     private let nextCoordinator: FilterCoordinator
     
     init(presenter: UINavigationController) {
@@ -35,7 +34,6 @@ final class AnimeViewCoordinator: Coordinator, AnimeViewCoordinatorProtocol {
             interactor: interactor
         )
         let animeVC = AnimeViewController(viewModel: viewModel)
-        animeViewController = animeVC
         presenter.pushViewController(animeVC, animated: true)
     }
     
@@ -49,8 +47,6 @@ final class AnimeViewCoordinator: Coordinator, AnimeViewCoordinatorProtocol {
         animeType: AnimeItemType,
         delegate: FilterViewModelDelegate?
     ) {
-        nextCoordinator.updateAnimeType(animeType: animeType)
-        nextCoordinator.update(delegate: delegate)
-        nextCoordinator.start()
+        nextCoordinator.start(animeType: animeType, delegate: delegate)
     }
 }

@@ -14,9 +14,7 @@ protocol FilterViewModelDelegate: AnyObject {
 
 final class FilterCoordinator: Coordinator {
     private let presenter: UINavigationController
-    private var animeType: AnimeItemType = .anime(.all, .none)
-    private var filterVC: FilterViewController?
-    private weak var delegate: FilterViewModelDelegate?
+    private var currentViewController: FilterViewController?
     
     init(
         presenter: UINavigationController
@@ -24,14 +22,7 @@ final class FilterCoordinator: Coordinator {
         self.presenter = presenter
     }
     
-    func updateAnimeType(animeType: AnimeItemType) {
-        self.animeType = animeType
-    }
-    func update(delegate: FilterViewModelDelegate?) {
-        self.delegate = delegate
-    }
-    
-    func start() {
+    func start(animeType: AnimeItemType, delegate: FilterViewModelDelegate?) {
         let vm = FilterViewModel(
             coordinator: self,
             animeType: animeType
@@ -42,10 +33,10 @@ final class FilterCoordinator: Coordinator {
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         presenter.present(vc, animated: true)
-        filterVC = vc
+        currentViewController = vc
     }
     
     func stop() {
-        filterVC?.dismiss(animated: true)
+        currentViewController?.dismiss(animated: true)
     }
 }
