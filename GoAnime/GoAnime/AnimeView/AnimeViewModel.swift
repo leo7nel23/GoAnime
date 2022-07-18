@@ -32,8 +32,8 @@ enum LoadMoreState {
 
 
 final class AnimeViewModel {
-    private weak var coordinator: AnimeViewCoordinatorProtocol?
-    private var interactor: AnimeViewInteractorProtocol
+    fileprivate weak var coordinator: AnimeViewCoordinatorProtocol?
+    fileprivate var interactor: AnimeViewInteractorProtocol
     
     var segmentItems: [String] = AnimeSegmentType.allCases.map { $0.title }
     var title: String = "Go Anime"
@@ -65,7 +65,13 @@ final class AnimeViewModel {
         interactor
             .animesPublisher
             .sink { [weak self] models in
-                self?.cellConfigurations = models.lazy.map { $0.cellConfiguration() }
+                guard let self = self else { return }
+                self.cellConfigurations = models.lazy.map {
+                    let config = $0.cellConfiguration()
+                    config.hideRank = self.animeItemType.isFavorit
+                    config.delegate = self
+                    return config
+                }
             }
             .store(in: &cancellable)
         
@@ -114,6 +120,21 @@ final class AnimeViewModel {
     func userDidTap(at indexPath: IndexPath) {
         guard indexPath.item < cellConfigurations.count else { return }
         let config = cellConfigurations[indexPath.item]
+        coordinator?.anime(modelDidTap: config.model)
+    }
+    
+    func searhDidTap() {
+        coordinator?.routeToSearch()
+    }
+}
+
+extension AnimeViewModel: AnimeItemConfigurationDelegate {
+    func configuration(_ config: AnimeItemConfiguration, didTapFavorite model: AnimeItemModel) {
+        if model.isFavorite {
+            interactor.removeFavorite(item: model)
+        } else {
+            interactor.addFavorite(item: model)
+        }
     }
 }
 

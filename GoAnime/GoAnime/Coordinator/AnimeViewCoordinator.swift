@@ -8,9 +8,11 @@
 import Foundation
 import UIKit
 import Session
+import SafariServices
 
 protocol AnimeViewCoordinatorProtocol: AnyObject {
-    
+    func anime(modelDidTap model: AnimeItemModel)
+    func routeToSearch()
 }
 
 final class AnimeViewCoordinator: Coordinator, AnimeViewCoordinatorProtocol {
@@ -33,5 +35,15 @@ final class AnimeViewCoordinator: Coordinator, AnimeViewCoordinatorProtocol {
         let animeVC = AnimeViewController(viewModel: viewModel)
         animeViewController = animeVC
         presenter.pushViewController(animeVC, animated: true)
+    }
+    
+    func anime(modelDidTap model: AnimeItemModel) {
+        guard let url = URL(string: model.url) else { return }
+        let safari = SFSafariViewController(url: url)
+        presenter.present(safari, animated: true)
+    }
+    
+    func routeToSearch() {
+        
     }
 }

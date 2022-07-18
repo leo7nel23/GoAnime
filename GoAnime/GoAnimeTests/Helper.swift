@@ -6,6 +6,7 @@
 //
 
 import Foundation
+@testable import GoAnime
 
 final class Helper {
     static let topAnime: [String: Any] =
@@ -258,4 +259,20 @@ final class Helper {
         ]
     ]
     
+}
+
+extension AnimeItemModel {
+    static let mock: AnimeItemModel = {
+        AnimeItemModel(
+            malId: 10,
+            url: "url",
+            imageUrl: "imageUrl",
+            thumbnailUrl: "thumbnailUrl",
+            title: "title",
+            rank: 100,
+            type: .manga(.all, .none),
+            fromDate: Date(),
+            toDate: Date()
+        )
+    }()
 }
