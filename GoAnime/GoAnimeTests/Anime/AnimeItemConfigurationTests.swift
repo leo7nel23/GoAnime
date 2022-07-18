@@ -18,7 +18,7 @@ final class AnimeItemConfigurationTests: XCTestCase {
         XCTAssertEqual(config.imageUrl, item.imageUrl)
         XCTAssertEqual(config.title, item.title)
         XCTAssertEqual(config.type, item.type.rawValue)
-        XCTAssertEqual(config.rank, item.rank)
+        XCTAssertEqual(config.rank, String(item.rank ?? 0))
         XCTAssertEqual(config.fromDate, item.fromDate)
         XCTAssertEqual(config.toDate, item.toDate)
         XCTAssertEqual(config.isFavorite, item.isFavorite)

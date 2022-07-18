@@ -124,7 +124,16 @@ final class AnimeViewModel {
     }
     
     func searhDidTap() {
-        coordinator?.routeToSearch()
+        coordinator?.routeToSearch(
+            animeType: animeItemType,
+            delegate: self
+        )
+    }
+}
+
+extension AnimeViewModel: FilterViewModelDelegate {
+    func viewModel(_ model: FilterViewModel, didCheckd type: AnimeItemType) {
+        updateFilter(type: type)
     }
 }
 

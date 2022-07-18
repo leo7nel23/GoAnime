@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum AnimeFilter: String, Codable {
+public enum AnimeFilter: String, Codable, CaseIterable {
     case airing
     case upcoming
     case bypopularity

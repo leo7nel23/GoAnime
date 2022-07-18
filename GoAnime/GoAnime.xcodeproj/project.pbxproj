@@ -35,6 +35,11 @@
 		55AACC192882ACFF00AF2240 /* AnimeViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AACC182882ACFF00AF2240 /* AnimeViewCoordinator.swift */; };
 		55AACC1B2882AD3500AF2240 /* AnimeViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AACC1A2882AD3500AF2240 /* AnimeViewInteractor.swift */; };
 		55C561FE288527DF00DDCFB6 /* AnimeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C561FD288527DF00DDCFB6 /* AnimeViewModelTests.swift */; };
+		55C562012885316100DDCFB6 /* AnimeItemContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C562002885316100DDCFB6 /* AnimeItemContentView.swift */; };
+		55C562032885322000DDCFB6 /* AnimeItemConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C562022885322000DDCFB6 /* AnimeItemConfigurationTests.swift */; };
+		55C5620528853E7200DDCFB6 /* FilterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5620428853E7200DDCFB6 /* FilterCoordinator.swift */; };
+		55C5620828853EA000DDCFB6 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5620728853EA000DDCFB6 /* FilterViewController.swift */; };
+		55C5620A28853EAA00DDCFB6 /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C5620928853EA900DDCFB6 /* FilterViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +89,11 @@
 		55AACC182882ACFF00AF2240 /* AnimeViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeViewCoordinator.swift; sourceTree = "<group>"; };
 		55AACC1A2882AD3500AF2240 /* AnimeViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeViewInteractor.swift; sourceTree = "<group>"; };
 		55C561FD288527DF00DDCFB6 /* AnimeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeViewModelTests.swift; sourceTree = "<group>"; };
+		55C562002885316100DDCFB6 /* AnimeItemContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeItemContentView.swift; sourceTree = "<group>"; };
+		55C562022885322000DDCFB6 /* AnimeItemConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimeItemConfigurationTests.swift; sourceTree = "<group>"; };
+		55C5620428853E7200DDCFB6 /* FilterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCoordinator.swift; sourceTree = "<group>"; };
+		55C5620728853EA000DDCFB6 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		55C5620928853EA900DDCFB6 /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +130,7 @@
 				55903DD22883021600FDC6F6 /* Coordinator.swift */,
 				55903DD42883023200FDC6F6 /* AppCoordinator.swift */,
 				55AACC182882ACFF00AF2240 /* AnimeViewCoordinator.swift */,
+				55C5620428853E7200DDCFB6 /* FilterCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -191,6 +202,7 @@
 		5590C84A2880F9C9004C4A22 /* GoAnime */ = {
 			isa = PBXGroup;
 			children = (
+				55C5620628853E9400DDCFB6 /* FilterView */,
 				55903DE52883EBDD00FDC6F6 /* Model */,
 				55903DDB2883E08D00FDC6F6 /* LocalService */,
 				55903DD12883020700FDC6F6 /* Coordinator */,
@@ -234,10 +246,10 @@
 		55AACC132882AB4F00AF2240 /* AnimeView */ = {
 			isa = PBXGroup;
 			children = (
+				55C561FF288530DE00DDCFB6 /* AnimeItemConfiguration */,
 				55903DF228844AEC00FDC6F6 /* Interactor */,
 				55AACC142882AB7400AF2240 /* AnimeViewController.swift */,
 				55AACC162882AB8600AF2240 /* AnimeViewModel.swift */,
-				55903DF92884EAF200FDC6F6 /* AnimeItemConfiguration.swift */,
 			);
 			path = AnimeView;
 			sourceTree = "<group>";
@@ -249,8 +261,27 @@
 				55903DEA288400C200FDC6F6 /* SessionInteractorTests.swift */,
 				55903DF528844D6000FDC6F6 /* AnimeInteractorTests.swift */,
 				55C561FD288527DF00DDCFB6 /* AnimeViewModelTests.swift */,
+				55C562022885322000DDCFB6 /* AnimeItemConfigurationTests.swift */,
 			);
 			path = Anime;
+			sourceTree = "<group>";
+		};
+		55C561FF288530DE00DDCFB6 /* AnimeItemConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				55903DF92884EAF200FDC6F6 /* AnimeItemConfiguration.swift */,
+				55C562002885316100DDCFB6 /* AnimeItemContentView.swift */,
+			);
+			path = AnimeItemConfiguration;
+			sourceTree = "<group>";
+		};
+		55C5620628853E9400DDCFB6 /* FilterView */ = {
+			isa = PBXGroup;
+			children = (
+				55C5620728853EA000DDCFB6 /* FilterViewController.swift */,
+				55C5620928853EA900DDCFB6 /* FilterViewModel.swift */,
+			);
+			path = FilterView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -392,14 +423,18 @@
 				55AACC172882AB8600AF2240 /* AnimeViewModel.swift in Sources */,
 				55AACC152882AB7400AF2240 /* AnimeViewController.swift in Sources */,
 				55903DF428844AFA00FDC6F6 /* PageHandler.swift in Sources */,
+				55C562012885316100DDCFB6 /* AnimeItemContentView.swift in Sources */,
 				55903DDF2883E39500FDC6F6 /* ItemStorage.swift in Sources */,
+				55C5620A28853EAA00DDCFB6 /* FilterViewModel.swift in Sources */,
 				55AACC1B2882AD3500AF2240 /* AnimeViewInteractor.swift in Sources */,
 				5590C84C2880F9C9004C4A22 /* AppDelegate.swift in Sources */,
 				55AACC192882ACFF00AF2240 /* AnimeViewCoordinator.swift in Sources */,
 				55903DDD2883E0AB00FDC6F6 /* FavoriteAnimeRepository.swift in Sources */,
 				55903DD52883023200FDC6F6 /* AppCoordinator.swift in Sources */,
 				55903DE72883EBF900FDC6F6 /* AnimeItemInfoModel.swift in Sources */,
+				55C5620828853EA000DDCFB6 /* FilterViewController.swift in Sources */,
 				55903DFA2884EAF200FDC6F6 /* AnimeItemConfiguration.swift in Sources */,
+				55C5620528853E7200DDCFB6 /* FilterCoordinator.swift in Sources */,
 				5590C84E2880F9C9004C4A22 /* SceneDelegate.swift in Sources */,
 				55903DDA2883DF2D00FDC6F6 /* Session+Repository.swift in Sources */,
 				55903DE22883E40E00FDC6F6 /* UserDefault+ItemStorage.swift in Sources */,
@@ -410,6 +445,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C562032885322000DDCFB6 /* AnimeItemConfigurationTests.swift in Sources */,
 				55903DE42883E8B100FDC6F6 /* FavoriteItemTests.swift in Sources */,
 				55C561FE288527DF00DDCFB6 /* AnimeViewModelTests.swift in Sources */,
 				55903DE92883F10200FDC6F6 /* AnimeItemInfoModelTests.swift in Sources */,
