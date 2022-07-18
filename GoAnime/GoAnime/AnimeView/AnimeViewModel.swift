@@ -40,16 +40,15 @@ final class AnimeViewModel {
     private var cancellable: Set<AnyCancellable> = []
     
     var segmentSelectedIndex: Int { segmentType.rawValue }
-    private var animeItemType: AnimeItemType = .favorite(.all) {
+    private var animeItemType: AnimeItemType = .manga(.all, .none) {
         didSet {
             interactor.reload(type: animeItemType)
         }
     }
     
-    var secionCount: Int = 1
     @Published private(set) var cellConfigurations: [AnimeItemConfiguration] = []
     @Published private(set) var loadMoreState: LoadMoreState = .none
-    @Published var segmentType: AnimeSegmentType = .favorite
+    @Published var segmentType: AnimeSegmentType = .manga
     
     init(
         coordinator: AnimeViewCoordinatorProtocol,
@@ -78,8 +77,6 @@ final class AnimeViewModel {
         interactor
             .loadingStatePublisher
             .sink { [weak self] state in
-                self?.secionCount = state == .finished ? 1 : 2
-                
                 self?.loadMoreState = {
                     switch state {
                     case .finished: return .finished
