@@ -150,7 +150,8 @@ final class FilterViewController: UIViewController {
                 b.titleLabel?.adjustsFontSizeToFitWidth = true
                 b.setBackgroundImage(UIImage(color: .systemTeal), for: .selected)
                 b.setBackgroundImage(UIImage(color: .systemBackground), for: .normal)
-                b.titleEdgeInsets = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+                b.configuration?.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16)
+                
                 return b
             }
             

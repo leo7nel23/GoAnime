@@ -99,17 +99,12 @@ extension FileManager: ImageHandlerProtocol {
 }
 
 extension String {
-    fileprivate var imageFileName: String { md5 + ".jpg" }
+    internal var imageFileName: String { sha256 + ".jpg" }
     
-    private var md5: String {
-        guard let data = data(using: .utf8) else {
-            return self
-        }
-        var digest = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
-        
-        _ = data.withUnsafeBytes { (bytes: UnsafeRawBufferPointer) in
-            return CC_MD5(bytes.baseAddress, CC_LONG(data.count), &digest)
-        }
-        return digest.map { String(format: "%02x", $0) }.joined()
+    private var sha256: String {
+        let utf8 = cString(using: .utf8)
+        var digest = [UInt8](repeating: 0, count: Int(CC_SHA256_DIGEST_LENGTH))
+        CC_SHA256(utf8, CC_LONG(utf8!.count - 1), &digest)
+        return digest.reduce("") { $0 + String(format:"%02x", $1) }
     }
 }
