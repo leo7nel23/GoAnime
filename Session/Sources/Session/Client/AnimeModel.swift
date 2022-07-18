@@ -26,4 +26,13 @@ public struct Pagination: Codable {
     public var lastVisiblePage: Int
     public var hasNextPage: Bool
     public var currentPage: Int
+    
+    public init(lastVisiblePage: Int,
+         hasNextPage: Bool,
+         currentPage: Int
+    ) {
+        self.lastVisiblePage = lastVisiblePage
+        self.hasNextPage = hasNextPage
+        self.currentPage = currentPage
+    }
 }

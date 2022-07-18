@@ -8,6 +8,7 @@
 import XCTest
 import Foundation
 @testable import Session
+import TestHelper
 
 class SessionAPITests: XCTestCase {
     let formatter: DateFormatter = {
@@ -88,7 +89,8 @@ class SessionAPITests: XCTestCase {
         XCTAssertEqual(first.title, "5-toubun no Hanayome")
         XCTAssertEqual(first.type, .manga)
         XCTAssertEqual(first.rank, 768)
-        XCTAssertEqual(formatter.string(from: first.published.from), "2014-04-07")
+        let from = try XCTUnwrap(first.published.from)
+        XCTAssertEqual(formatter.string(from: from), "2014-04-07")
         XCTAssertNil(first.published.to)
     }
     
@@ -128,7 +130,8 @@ class SessionAPITests: XCTestCase {
         XCTAssertEqual(first.title, "Tengen Toppa Gurren Lagann: Parallel Works")
         XCTAssertEqual(first.type, .music)
         XCTAssertEqual(first.rank, 3523)
-        XCTAssertEqual(formatter.string(from: first.aired.from), "2008-06-15")
+        let from = try XCTUnwrap(first.aired.from)
+        XCTAssertEqual(formatter.string(from: from), "2008-06-15")
         
         let to = try XCTUnwrap(first.aired.to)
         XCTAssertEqual(formatter.string(from: to), "2008-09-14")

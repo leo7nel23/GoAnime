@@ -9,6 +9,7 @@ import Foundation
 import XCTest
 import Combine
 @testable import Session
+import TestHelper
 
 struct MockParameter: SessionParameterProtocol {
     typealias Response = MockResponseModel

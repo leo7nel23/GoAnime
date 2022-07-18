@@ -7,12 +7,13 @@
 
 import Foundation
 import UIKit
+import Session
 
 protocol AnimeViewCoordinatorProtocol: AnyObject {
     
 }
 
-class AnimeViewCoordinator: Coordinator, AnimeViewCoordinatorProtocol {
+final class AnimeViewCoordinator: Coordinator, AnimeViewCoordinatorProtocol {
     private let presenter: UINavigationController
     private var animeViewController: AnimeViewController?
     
@@ -21,7 +22,10 @@ class AnimeViewCoordinator: Coordinator, AnimeViewCoordinatorProtocol {
     }
     
     func start() {
-        let interactor = AnimeViewInteractor()
+        let interactor = AnimeViewInteractor(
+            animeRepository: Session.shared,
+            favoriteRepository: FavoriteAnimeRepository(storage: UserDefaults.standard)
+        )
         let viewModel = AnimeViewModel(
             coordinator: self,
             interactor: interactor

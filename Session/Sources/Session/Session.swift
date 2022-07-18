@@ -7,8 +7,9 @@
 
 import Foundation
 import Combine
+import TestHelper
 
-let decoder: JSONDecoder = {
+public let decoder: JSONDecoder = {
     let decoder = JSONDecoder()
     decoder.keyDecodingStrategy = .convertFromSnakeCase
     decoder.dateDecodingStrategy = .iso8601
@@ -27,7 +28,7 @@ public class Session {
         return URLSession(configuration: config)
     }()
     
-    func request<T>(
+    public func request<T>(
         _ parameter: T,
         decoder: JSONDecoder = decoder
     ) -> AnyPublisher<T.Response, Error> where T: SessionParameterProtocol {

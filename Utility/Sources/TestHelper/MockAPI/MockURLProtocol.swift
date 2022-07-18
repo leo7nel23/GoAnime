@@ -7,15 +7,15 @@
 
 import Foundation
 
-class MockURLProtocol: URLProtocol {
-    enum Error: Swift.Error, LocalizedError, CustomDebugStringConvertible {
+public class MockURLProtocol: URLProtocol {
+    public enum Error: Swift.Error, LocalizedError, CustomDebugStringConvertible {
         case missingMockedData(url: String)
         
-        var errorDescription: String? {
+        public var errorDescription: String? {
             return debugDescription
         }
         
-        var debugDescription: String {
+        public var debugDescription: String {
             switch self {
             case .missingMockedData(let url):
                 return "Missing mock for URL: \(url)"
@@ -23,15 +23,15 @@ class MockURLProtocol: URLProtocol {
         }
     }
     
-    override class func canInit(with request: URLRequest) -> Bool {
+    public override class func canInit(with request: URLRequest) -> Bool {
         Mocker.shared.shouldHandle(for: request)
     }
     
-    override class func canonicalRequest(for request: URLRequest) -> URLRequest {
+    public override class func canonicalRequest(for request: URLRequest) -> URLRequest {
         request
     }
     
-    override func startLoading() {
+    public override func startLoading() {
         guard let mockAPI = Mocker.shared.mockAPI(for: request),
               let response = HTTPURLResponse(
                 url: mockAPI.urlRequest.url!,
@@ -52,6 +52,5 @@ class MockURLProtocol: URLProtocol {
         mockAPI.didComplete?()
     }
     
-    override func stopLoading() { }
+    public override func stopLoading() { }
 }
-

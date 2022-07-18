@@ -41,33 +41,14 @@ public class MockAPI: Equatable {
     
     public var didComplete: (() -> Void)?
     
-    public init<T: SessionParameterProtocol>(
-        parameter: T,
+    public init(
+        urlRequest: URLRequest,
         response: MockResponseData,
         unregisterAfterCompletion: Bool = true
     ) {
-        let path = parameter.path.count > 0 ? parameter.path : "PATH"
-        var request = URLRequest(url: URL(string: path)!)
-        request.httpMethod = parameter.httpMethod.rawValue
-        request.timeoutInterval = parameter.timeout
-        
-        self.urlRequest = request
+        self.urlRequest = urlRequest
         self.response = response
         self.unregisterAfterCompletion = unregisterAfterCompletion
-    }
-    
-    public convenience init<T: SessionParameterProtocol>(
-        parameter: T,
-        data: DataConvertible,
-        statusCode: Int = 200
-    ) {
-        self.init(
-            parameter: parameter,
-            response: MockResponseData(
-                data: data,
-                statusCode: statusCode
-            )
-        )
     }
     
     public func register() {

@@ -12,16 +12,23 @@ let package = Package(
             targets: ["Session"]
         ),
     ],
-    dependencies: [],
+    dependencies: [
+        .package(name: "Utility", path: "../Utility")
+    ],
     targets: [
         .target(
             name: "Session",
-            dependencies: [],
+            dependencies: [
+                .product(name: "TestHelper", package: "Utility")
+            ],
             swiftSettings: [.define("DEBUG_MODE", .when(configuration: .debug))]
         ),
         .testTarget(
             name: "SessionTests",
-            dependencies: ["Session"]
+            dependencies: [
+                "Session",
+                .product(name: "TestHelper", package: "Utility")
+            ]
         )
     ]
 )
