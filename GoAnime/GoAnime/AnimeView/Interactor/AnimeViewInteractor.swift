@@ -85,6 +85,7 @@ final class AnimeViewInteractor: AnimeViewInteractorProtocol {
             let info = AnimeItemInfoModel(currentPage: 1, hasNextPage: false, animeItems: favoriteRepository.favoriteItems())
             processAnime(info: info, type: type, isReload: true)
         } else {
+            animes = []
             cancellable = animeRepository
                 .topAnime(
                     type: type, page: 1, mockData: nil)
@@ -110,6 +111,8 @@ final class AnimeViewInteractor: AnimeViewInteractorProtocol {
             animes = animes
             return
         }
+        
+        guard loadingState != .loading else { return }
         
         cancellable = nil
         loadingState = .loading

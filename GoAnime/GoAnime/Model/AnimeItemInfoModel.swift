@@ -25,7 +25,7 @@ final class AnimeItemInfoModel: Codable {
 }
 
 final class AnimeItemModel: Codable, Identifiable {
-    var id: String = ""
+    lazy var id: String = "\(self.malId)"
     var isFavorite: Bool = false
     
     var malId: Int
@@ -35,7 +35,7 @@ final class AnimeItemModel: Codable, Identifiable {
     var title: String
     var rank: Int
     var type: AnimeItemType
-    var fromDate: Date
+    var fromDate: Date?
     var toDate: Date?
     
     init(
@@ -46,7 +46,7 @@ final class AnimeItemModel: Codable, Identifiable {
         title: String,
         rank: Int,
         type: AnimeItemType,
-        fromDate: Date,
+        fromDate: Date?,
         toDate: Date?
     ) {
         self.malId = malId

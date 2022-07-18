@@ -40,6 +40,7 @@ public enum MangaType: String, Codable {
     case oneshot
     case doujin
     case manhwa
+    case manhua
     case all
     
     public init(from decoder: Decoder) throws {
@@ -47,6 +48,7 @@ public enum MangaType: String, Codable {
         var rawString = try container.decode(String.self)
         
         rawString = rawString.replacingOccurrences(of: " ", with: "")
+        rawString = rawString.replacingOccurrences(of: "-", with: "")
         if let type = MangaType(rawValue: rawString.lowercased()) {
             self = type
         } else {
@@ -90,11 +92,11 @@ public struct MangaItem: Codable {
     }
     
     public struct Published: Codable {
-        public var from: Date
+        public var from: Date?
         public var to: Date?
         
         public init(
-            from: Date,
+            from: Date? = nil,
             to: Date? = nil
         ) {
             self.from = from

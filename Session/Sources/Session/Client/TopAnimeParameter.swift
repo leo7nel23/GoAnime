@@ -47,6 +47,7 @@ public enum AnimeType: String, Codable {
         var rawString = try container.decode(String.self)
         
         rawString = rawString.replacingOccurrences(of: " ", with: "")
+        rawString = rawString.replacingOccurrences(of: "-", with: "")
         if let type = AnimeType(rawValue: rawString.lowercased()) {
             self = type
         } else {
@@ -89,11 +90,11 @@ public struct AnimeItem: Codable {
     }
     
     public struct Aired: Codable {
-        public var from: Date
+        public var from: Date?
         public var to: Date?
         
         public init(
-            from: Date,
+            from: Date? = nil,
             to: Date? = nil
         ) {
             self.from = from
